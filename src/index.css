@@ -6,9 +6,9 @@
 
 body {
   font-size: 2.4rem;
-  font-family: sans-serif;
-  /* color: #5a3e2b; */
-  font-family: "Quicksand";
+  /* font-family:; */
+  color: #5a3e2b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   /* overflow: visible; */
 }
@@ -29,10 +29,10 @@ body {
 }
 
 .input-section {
-  max-width: max-content;
+  /* max-width: max-content; */
   padding: 3rem;
   background-color: burlywood;
-  display: inline-flex;
+  display: flex;
   /* flex-direction: row; */
   align-items: center;
   justify-content: center;
@@ -40,10 +40,11 @@ body {
 }
 
 input, select, textarea{
+  
   font-family: inherit;
   font-weight: 700;
-  font-size: 1.2rem;
-  padding: 1rem 3rem;
+  font-size: 1rem;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 10rem;
 }
@@ -56,7 +57,8 @@ select {
   margin: 0 0.8rem;
 }
 
-button {
+.add-button {
+  border: none;
   text-transform: uppercase;
   font-family: inherit;
   font-weight: 700;
@@ -69,40 +71,80 @@ button {
   
 }
 
-button:hover {
+.add-button:hover {
   background-color: #76c7ad;
-}
+} 
 
 .cards-grid {
-  background-color: chocolate;
+  background-color: #5a3e2b;
+  color: #ffebb3;
+  padding: 4rem 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
 }
 
 .cards-grid ul{
   padding: 1.5rem;
   list-style: none;
-  /* text-align: center; */
-  width: 25%;
+  text-align: center;
+  /* width: 20
+  %; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.2rem;
   justify-content: center;
-  align-content: start;
+  align-content: center;
 }
 
 .card {
-  border: 2px solid white;
-  border-radius: 3rem;
+  border: 1px solid #e7e7e7;
+  background-color: #f7f7f7;
+  border-radius: 7px;
   border-style: groove;
-  text-align: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  /* aspect-ratio: 2 / 1; */
 }
 
 .card:hover {
   border-style: solid;
 }
 
-.card li {
+.hidden {
+  display: none;
+}
+
+.card-heading {
   display: flex;
-  align-items: center;
-  gap: 1.2rem;
+  gap: 1.8rem; 
+  font-size: 1.5rem;
+}
+
+.card-heading > button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.card-task{
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.card-timing{
+  border: 0.5px solid black;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.card-footer{
+  font-size: 0.8rem;
 }

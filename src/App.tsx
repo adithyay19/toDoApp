@@ -12,17 +12,35 @@ const initialList = [
 ];
 
 function Card(props: any) {
+  const [remove, setRemove] = useState(false);
+  const currentDate = new Date();
+  const daysLeft = Math.abs(props.item.date.valueOf() - currentDate.valueOf());
+
+  function removeTask() {
+    setRemove(!remove);
+    console.log(daysLeft);
+  }
+
   return (
-    <div className="card">
-      <li>
-        {props.item.id} <br />
-        {props.item.title} <br />
-        {props.item.task} <br />
-        {props.item.date} <br />
-        {props.item.time} <br />
-        {props.item.repeat}
-      </li>
-    </div>
+    <li className={remove === true ? "card hidden" : "card"}>
+      <ul>
+        <li className="card-heading">
+          <button onClick={removeTask}>❌</button>
+          <h3>{props.item.title}</h3>
+        </li>
+        <li className="card-task">
+          <p>{props.item.task}</p>
+        </li>
+        <li>
+          <p className="card-timing">
+            Reminder on {props.item.date} at {props.item.time}
+          </p>
+        </li>
+        <li className="card-footer">
+        <p>Repeats {props.item.repeat}</p>
+        </li>
+      </ul>
+    </li>
   );
 }
 
@@ -60,7 +78,6 @@ function App() {
         <form onSubmit={handleSubmit} className="input-section">
           <input
             type="text"
-            minLength={10}
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -89,7 +106,7 @@ function App() {
             <option value="monthly">Monthly</option>
             <option value="yearly">Yearly</option>
           </select>
-          <button>Add</button>
+          <button className="add-button">Add</button>
         </form>
       </div>
       <div className="cards-grid">
