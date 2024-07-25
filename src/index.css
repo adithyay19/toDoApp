@@ -7,9 +7,10 @@
 body {
   font-size: 2.4rem;
   font-family: sans-serif;
-  color: #5a3e2b;
+  /* color: #5a3e2b; */
   font-family: "Quicksand";
   font-weight: 500;
+  /* overflow: visible; */
 }
 
 .app {
@@ -38,7 +39,7 @@ body {
   gap: 1rem;
 }
 
-input, select{
+input, select, textarea{
   font-family: inherit;
   font-weight: 700;
   font-size: 1.2rem;
@@ -72,9 +73,15 @@ button:hover {
   background-color: #76c7ad;
 }
 
+.cards-grid {
+  background-color: chocolate;
+}
+
 .cards-grid ul{
+  padding: 1.5rem;
   list-style: none;
-  width: 75%;
+  /* text-align: center; */
+  width: 25%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.2rem;
@@ -84,6 +91,14 @@ button:hover {
 
 .card {
   border: 2px solid white;
+  border-radius: 3rem;
+  border-style: groove;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-style: solid;
 }
 
 .card li {
