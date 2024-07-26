@@ -7,7 +7,7 @@
 body {
   color: #4B5257;
   background-color: #D7EEFA;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: 500;
   font-size: 2.4rem;
 }
@@ -108,8 +108,9 @@ input, select, textarea {
 
 .card-heading {
   display: flex;
-  gap: 1.8rem; 
+  gap: 1.5rem; 
   font-size: 1.5rem;
+  justify-content: left;
 }
 
 .card-heading > button {

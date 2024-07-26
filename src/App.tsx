@@ -66,11 +66,11 @@ function App() {
           repeat: repeat,
         },
       ]);
-      // setTitle("");
-      // setTask("");
-      // setDate("");
-      // setTime("");
-      // setRepeat("");
+      setTitle("");
+      setTask("");
+      setDate("");
+      setTime("");
+      setRepeat("");
     }
   }
 
