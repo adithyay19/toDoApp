@@ -1,4 +1,7 @@
 import { useState } from "react";
+import InputSection from "./InputSection";
+import Header from "./Header";
+import TasksList from "./TasksList";
 
 const initialList = [
   {
@@ -11,37 +14,7 @@ const initialList = [
   },
 ];
 
-function Card(props: any) {
-  const [remove, setRemove] = useState(false);
-
-  function removeTask() {
-    setRemove(!remove);
-  }
-
-  return (
-    <li className={remove === true ? "card hidden" : "card"}>
-      
-        <div className="card-heading">
-          <button onClick={removeTask}>❌</button>
-          <h3>{props.item.title}</h3>
-        </div>
-        <div className="card-task">
-          <p>{props.item.task}</p>
-        </div>
-        <div>
-          <p className="card-timing">
-            Reminder on {props.item.date} at {props.item.time}
-          </p>
-        </div>
-        <div className="card-footer">
-          <p>Repeats {props.item.repeat}</p>
-        </div>
-      
-    </li>
-  );
-}
-
-function App() {
+export default function App() {
   const [lists, setLists] = useState(initialList);
   const [title, setTitle] = useState("");
   const [task, setTask] = useState("");
@@ -51,8 +24,7 @@ function App() {
 
   function handleSubmit(event: any) {
     event.preventDefault();
-    if (title === "" || task === "" || date === "" || time === "")
-      alert("Fill all the fields!");
+    if (!title || !task || !date || !time) alert("Fill all the fields!");
     else {
       console.log(title, task, date, time, repeat);
       setLists([
@@ -74,58 +46,27 @@ function App() {
     }
   }
 
+  function handleRemoveTask(id: any) {
+    setLists(lists.filter((list: any) => list.id != id));
+  }
+
   return (
     <div className="app">
-      <div className="header">
-        <h1>To-Do List</h1>
-      </div>
-
-      <form onSubmit={handleSubmit} className="input-section">
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Task"
-          inputMode="text"
-          rows={1}
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-        />
-        <input
-          type="date"
-          defaultValue="Date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <input
-          type="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
-        <select value={repeat} onChange={(e) => setRepeat(e.target.value)}>
-          <option value="never">Never</option>
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-          <option value="yearly">Yearly</option>
-        </select>
-        <button className="add-button" type="submit">
-          Add
-        </button>
-      </form>
-
-      <div className="cards-grid">
-        <ul>
-          {lists.map((i) => (
-            <Card key={i.id} item={i} />
-          ))}
-        </ul>
-      </div>
+      <Header />
+      <InputSection
+        handleSubmit={handleSubmit}
+        title={title}
+        setTitle={setTitle}
+        task={task}
+        setTask={setTask}
+        date={date}
+        setDate={setDate}
+        time={time}
+        setTime={setTime}
+        repeat={repeat}
+        setRepeat={setRepeat}
+      />
+      <TasksList lists={lists} removeTask={handleRemoveTask} />
     </div>
   );
 }
-
-export default App;
