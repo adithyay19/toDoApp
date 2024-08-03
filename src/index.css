@@ -138,3 +138,10 @@ textarea {
 .card-footer {
   font-size: 0.8rem;
 }
+
+
+@media screen and (max-width: 900px){
+  .input-section{
+    display: grid;
+    }
+}
